@@ -1,11 +1,13 @@
-﻿Main();
+﻿using System;
+
+Main();
 
 void Main()
 {
     bool isWorking = true;
     while (isWorking)
     {
-        Console.Write("Input task number: ");
+        Console.Write("Input task number (54,56,58,60,62): ");
         switch (Console.ReadLine())
         {
             case "54": Task54(); break;
@@ -32,6 +34,59 @@ void Main()
 */
 void Task54()
 {
+    Console.WriteLine("Array m*n");
+    Random random = new Random();
+    int m = ReadInt("m");
+    int n = ReadInt("n");
+    int[,] array = new int[m, n];
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            array[i, k] = random.Next(1, 10);
+        }
+
+    }
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            Console.Write($"{array[i, k]} ");
+        }
+        Console.WriteLine();
+
+    }
+
+    Console.WriteLine("Sorted array:");
+
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = array.GetLength(1) - 1; j > 0; j--)
+        {
+            for (int k = 0; k < j; k++)
+            {
+                if (array[i, k] > array[i, k + 1])
+                {
+                    int temp = array[i, k];
+                    array[i, k] = array[i, k + 1];
+                    array[i, k + 1] = temp;
+                }
+            }
+        } 
+    }
+
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            Console.Write($"{array[i, k]} ");
+        }
+        Console.WriteLine();
+
+    }
 }
 
 /*
@@ -52,6 +107,56 @@ void Task54()
 
 void Task56()
 {
+    Console.WriteLine("Array m*n");
+    Random random = new Random();
+    int m = ReadInt("m");
+    int n = ReadInt("n");
+    int[,] array = new int[m, n];
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            array[i, k] = random.Next(1, 10);
+        }
+
+    }
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            Console.Write($"{array[i, k]} ");
+        }
+        Console.WriteLine();
+
+    }
+
+    Console.WriteLine("Sorted array:");
+
+    int[] sumArray = new int[m];
+
+    for (int i = 0; i < sumArray.Length; i++)
+    {
+        int sum = 0;
+        for (int k = 0; k < array.GetLength(1); k++)
+        {
+            sum = sum + array[i, k];
+        }
+        sumArray[i] = sum;
+    }
+
+    int min = int.MaxValue;
+    int minRow = 0;
+    for (int i = 0; i < sumArray.Length; i++)
+    {
+        if(min > sumArray[i])
+        {
+            min = sumArray[i];
+            minRow = i + 1;
+        }
+    }
+
+    Console.WriteLine($"{minRow} строка");
 }
 
 /*
@@ -65,6 +170,69 @@ void Task56()
 */
 void Task58()
 {
+    Random rand = new Random();
+    int[,] a = new int[2, 2];
+    int[,] b = new int[2, 2];
+    int[,] c = new int[2, 2];
+
+    Console.WriteLine("Array a:");
+    for (int i = 0; i < a.GetLength(0); i++)
+    {
+        for (int j = 0; j < a.GetLength(1); j++)
+        {
+            a[i, j] = ReadInt("");//rand.Next(1, 10);
+        }
+    }
+
+    for (int i = 0; i < a.GetLength(0); i++)
+    {
+        for (int k = 0; k < a.GetLength(1); k++)
+        {
+            Console.Write($"{a[i, k]} ");
+        }
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("Array b:");
+    for (int i = 0; i < b.GetLength(0); i++)
+    {
+        for (int j = 0; j < b.GetLength(1); j++)
+        {
+            b[i, j] = ReadInt("");//rand.Next(1, 10);
+        }
+    }
+
+    for (int i = 0; i < b.GetLength(0); i++)
+    {
+        for (int k = 0; k < b.GetLength(1); k++)
+        {
+            Console.Write($"{b[i, k]} ");
+        }
+        Console.WriteLine();
+    }
+
+    Console.WriteLine("a*b:");
+    for (int i = 0; i < a.GetLength(0); i++)
+    {
+        for (int j = 0; j < b.GetLength(1); j++)
+        {
+            for (int k = 0; k < b.GetLength(0); k++)
+            {
+                c[i, j] += a[i, k] * b[k, j];
+            }
+        }
+    }
+
+
+    for (int i = 0; i < c.GetLength(0); i++)
+    {
+        for (int k = 0; k < c.GetLength(1); k++)
+        {
+            Console.Write($"{c[i, k]} ");
+        }
+        Console.WriteLine();
+
+    }
 }
 
 
@@ -79,6 +247,31 @@ void Task58()
 */
 void Task60()
 {
+    Console.WriteLine("Array 2*2*2");
+    Random random = new Random();
+    int[,,] array = new int[2,2,2];
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                array[i, k, j] = random.Next(1, 99);
+            }
+        }
+    }
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+            {
+                Console.Write($"{array[i, k, j]}({i},{k},{j}) ");
+            }
+            Console.WriteLine();
+        }
+    }
 }
 
 
@@ -93,6 +286,53 @@ void Task60()
 */
 void Task62()
 {
+    int numberOfRows = 4;
+    int numberOfColumns = 4;
+    Console.WriteLine($"Array {numberOfRows}*{numberOfColumns}");
+    Random random = new Random();
+    int[,] array = new int[numberOfRows, numberOfColumns];
+     
+
+    int columnStart = 0;
+    int columnEnd = 0;
+    int rowStart = 0;
+    int rowEnd = 0;
+
+    int number = 1;
+    int columnIndex = 0;
+    int rowIndex = 0;
+
+    while (number <= numberOfRows * numberOfColumns)
+    {
+        array[columnIndex, rowIndex] = number;
+        if (columnIndex == columnStart && rowIndex < numberOfColumns - rowEnd - 1)
+            ++rowIndex;
+        else if (rowIndex == numberOfColumns - rowEnd - 1 && columnIndex < numberOfRows - columnEnd - 1)
+            ++columnIndex;
+        else if (columnIndex == numberOfRows - columnEnd - 1 && rowIndex > rowStart)
+            --rowIndex;
+        else
+            --columnIndex;
+
+        if ((columnIndex == columnStart + 1) && (rowIndex == rowStart) && (rowStart != numberOfColumns - rowEnd - 1))
+        {
+            ++columnStart;
+            ++columnEnd;
+            ++rowStart;
+            ++rowEnd;
+        }
+        ++number;
+    }
+
+    for (int a = 0; a < array.GetLength(0); a++)
+    {
+        for (int b = 0; b < array.GetLength(1); b++)
+        {
+            Console.Write($"{array[a, b].ToString("D2")} ");
+        }
+        Console.WriteLine();
+
+    }
 }
 
 
